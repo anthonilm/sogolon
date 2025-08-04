@@ -1,12 +1,6 @@
 .wrapper {
   padding: 4rem 2rem;
-  background: linear-gradient(
-    to bottom,
-    #0c1b19 0%,       /* exact match from 1:1 bottom */
-    #1e2d29 25%,      /* gradual transition */
-    #434d45 60%,      /* intermediate tone */
-    #ebe6d7 100%      /* bone base */
-  );
+  /* background removed to allow continuous parent gradient */
 }
 
 .heading {

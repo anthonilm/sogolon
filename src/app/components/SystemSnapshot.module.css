@@ -3,13 +3,13 @@
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  /* background removed for continuous gradient */
 }
 
 .tile {
   scroll-snap-align: start;
   height: 100vh;
   padding: 4rem 2rem;
-  background: linear-gradient(to bottom, #ece7db, #dcd3c4);
   color: #111;
   display: flex;
   flex-direction: column;
@@ -18,10 +18,11 @@
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  /* background removed to inherit root fade */
 }
 
 .tile:hover {
-  background-color: #d5cbb8;
+  background-color: rgba(213, 203, 184, 0.6); /* faded hover effect without harsh override */
   transform: translateY(-2px);
 }
 

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #0a0a0a, #1b2e2c); /* exact same fade */
+  /* background removed to allow parent-level fade */
   color: #e4d3aa;
   padding: 0 2rem;
 }
