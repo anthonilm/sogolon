@@ -38,6 +38,7 @@ export default function NavOverlay() {
               <button className={styles.closeButton} onClick={() => setMenuOpen(false)}>×</button>
             </div>
             <nav className={styles.menuLinks}>
+              <a href="/" onClick={handleLinkClick}>Home</a>
               <a href="#who-we-are" onClick={handleLinkClick}>Who We Are</a>
               <a href="#what-we-offer" onClick={handleLinkClick}>What We Offer</a>
               <a href="/who-we-are-for" onClick={handleLinkClick}>Who We Are For</a>

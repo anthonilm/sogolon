@@ -1,11 +1,11 @@
 .wrapper {
   padding: 4rem 2rem;
-  /* Full-section gradient from carbon to bone */
   background: linear-gradient(
     to bottom,
-    rgba(12, 24, 20, 1) 0%,
-    rgba(92, 101, 93, 1) 50%,
-    rgba(235, 230, 215, 1) 100%
+    #0c1b19 0%,       /* exact match from 1:1 bottom */
+    #1e2d29 25%,      /* gradual transition */
+    #434d45 60%,      /* intermediate tone */
+    #ebe6d7 100%      /* bone base */
   );
 }
 
@@ -13,7 +13,7 @@
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #fff;
+  color: #e4d3aa;
 }
 
 .scrollContainer {
@@ -50,11 +50,11 @@
 .title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #e4d3aa;
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.5;
-  color: #eee;
+  color: #e4d3aa;
 }

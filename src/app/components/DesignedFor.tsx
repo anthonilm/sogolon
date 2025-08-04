@@ -25,7 +25,7 @@ const profiles = [
 export default function DesignedFor() {
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.heading}>Designed for People Who…</h2>
+      <h2 className={styles.heading}>Designed for…</h2>
       <div className={styles.scrollContainer}>
         {profiles.map((profile, index) => (
           <div className={styles.card} key={index}>
