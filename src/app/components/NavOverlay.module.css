@@ -82,13 +82,18 @@
   text-align: center;
 }
 
-.menuLinks a {
+/* Updated styling for buttons to match links */
+.menuLinks button {
+  all: unset;
   color: #f0f0f0;
-  text-decoration: none;
+  font-family: var(--font-geist-sans);
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.menuLinks a:hover {
+.menuLinks button:hover {
   color: #e4d3aa;
 }
 

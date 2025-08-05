@@ -2,14 +2,18 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import styles from './NavOverlay.module.css';
 
 export default function NavOverlay() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [askOpen, setAskOpen] = useState(false);
+  const router = useRouter();
 
-  // Helper to close menu when link is clicked
-  const handleLinkClick = () => setMenuOpen(false);
+  const handleNavigate = (path: string) => {
+    router.push(path);
+    setMenuOpen(false);
+  };
 
   return (
     <>
@@ -37,13 +41,14 @@ export default function NavOverlay() {
               <p className={styles.menuSubtitle}>Precision Systems for Cognitive Performance</p>
               <button className={styles.closeButton} onClick={() => setMenuOpen(false)}>×</button>
             </div>
+
             <nav className={styles.menuLinks}>
-              <a href="/" onClick={handleLinkClick}>Home</a>
-              <a href="#who-we-are" onClick={handleLinkClick}>Who We Are</a>
-              <a href="#what-we-offer" onClick={handleLinkClick}>What We Offer</a>
-              <a href="/who-we-are-for" onClick={handleLinkClick}>Who We Are For</a>
-              <a href="#start-diagnostic" onClick={handleLinkClick}>Start Diagnostic</a>
-              <a href="#contact-us" onClick={handleLinkClick}>Contact Us</a>
+              <button onClick={() => handleNavigate('/')}>Home</button>
+              <button onClick={() => handleNavigate('/who-we-are')}>Who We Are</button>
+              <button onClick={() => handleNavigate('/what-we-offer')}>What We Offer</button>
+              <button onClick={() => handleNavigate('/who-we-are-for')}>Who We Are For</button>
+              <button onClick={() => handleNavigate('/start-diagnostic')}>Start Diagnostic</button>
+              <button onClick={() => handleNavigate('/contact-us')}>Contact Us</button>
             </nav>
           </motion.div>
         )}

@@ -1,0 +1,87 @@
+.wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ece7db, #1a1a1a); /* bone → dark */
+  padding: 4rem 2rem;
+  color: #111; /* Adjusted for readability */
+  font-family: var(--font-geist-sans);
+ }
+
+.heading {
+  font-size: 2.5rem;
+  font-family: var(--font-cormorant);
+  color: #b14d38; /* rust */
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Scrollable top section */
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.tile {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  background-color: #333;
+}
+
+.tile h2 {
+  font-size: 1.5rem;
+  font-family: var(--font-cormorant);
+  margin-bottom: 1rem;
+  color: #e4d3aa;
+}
+
+.tile p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Grid section */
+.gridSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+.gridTile {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gridTile:hover {
+  background-color: #333;
+  transform: translateY(-3px);
+}
+
+.gridTile h3 {
+  font-size: 1.25rem;
+  color: #e4d3aa;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-cormorant);
+}
+
+.gridTile p {
+  font-size: 1rem;
+  color: #ccc;
+}
