@@ -2,6 +2,12 @@
 
 import styles from './WhoWeAreFor.module.css';
 import Link from 'next/link';
+import { siteMeta } from '@/lib/meta';
+
+export const metadata = {
+  title: siteMeta.routes['/who-we-are-for']?.title ?? 'Who We Are For',
+  description: siteMeta.routes['/who-we-are-for']?.description ?? '',
+};
 
 const groups = [
   {

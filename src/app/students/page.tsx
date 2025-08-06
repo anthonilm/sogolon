@@ -2,6 +2,12 @@
 
 import React from 'react';
 import styles from '../ClientPage.module.css';
+import { siteMeta } from '@/lib/meta';
+
+export const metadata = {
+  title: siteMeta.routes['/students'].title,
+  description: siteMeta.routes['/students'].description,
+};
 
 export default function StudentsPage() {
   return (

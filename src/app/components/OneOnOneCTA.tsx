@@ -12,7 +12,7 @@ export default function OneOnOneCTA() {
         <p className={styles.text}>
           Our core service is working directly with individuals. If you're ready to improve decision-making, performance durability, and stress recovery—schedule your first session.
         </p>
-        <Link href="/start-diagnostic" className={styles.button}>
+        <Link href="/book-session" className={styles.button}>
           Schedule Now →
         </Link>
       </div>

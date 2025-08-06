@@ -1,10 +1,10 @@
 .wrapper {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ece7db, #1a1a1a); /* bone → dark */
+  background: linear-gradient(to bottom, #1f2e26, #ece7db); /* olive green → bone */
   padding: 4rem 2rem;
-  color: #111; /* Adjusted for readability */
+  color: #111;
   font-family: var(--font-geist-sans);
- }
+}
 
 .heading {
   font-size: 2.5rem;

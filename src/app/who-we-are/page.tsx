@@ -1,6 +1,12 @@
 'use client';
 
 import React from 'react';
+import { siteMeta } from '@/lib/meta';
+
+export const metadata = {
+  title: siteMeta.routes['/who-we-are'].title,
+  description: siteMeta.routes['/who-we-are'].description,
+};
 
 export default function WhoWeArePage() {
   return (

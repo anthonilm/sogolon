@@ -1,66 +1,90 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './WhatWeOffer.module.css';
+import { siteMeta } from '@/lib/meta';
 
-const categories = [
-  {
-    title: 'Services',
-    description: '1:1 sessions, diagnostics, and custom performance protocols.',
-  },
-  {
-    title: 'Products',
-    description: 'Tools, planners, and habit kits to support behavior change.',
-  },
-  {
-    title: 'Books',
-    description: 'Coming soon: titles to support mental performance mastery.',
-  },
-];
 
-const contentTiles = [
-  {
-    title: 'Newsletter',
-    description: 'Get insights, updates, and tips delivered monthly.',
-  },
-  {
-    title: 'Research Paper 1',
-    description: 'How behavioral systems impact long-term performance.',
-  },
-  {
-    title: 'Research Paper 2',
-    description: 'The science behind diagnostic-first coaching.',
-  },
-  {
-    title: 'Whitepaper',
-    description: 'A technical look at our performance architecture.',
-  },
-];
+export const metadata = {
+  title: siteMeta.routes['/what-we-offer'].title,
+  description: siteMeta.routes['/what-we-offer'].description,
+};
+
+const sections = {
+  services: [
+    {
+      title: 'Weekly Session',
+      description: '1:1 session for structure, accountability, and performance strategy.',
+      slug: 'weekly-session',
+    },
+    {
+      title: 'IEP Care Plan',
+      description: 'Ongoing support plan based on diagnostic data and behavior mapping.',
+      slug: 'iep-care-plan',
+    },
+    {
+      title: 'Diagnostic Only',
+      description: 'One-time COM-B assessment with track recommendation and action plan.',
+      slug: 'diagnostic-only',
+    },
+  ],
+  products: [
+    {
+      title: 'Field Manual',
+      description: 'Tactical performance workbook used over a 6–12 week cycle.',
+      slug: 'field-manual',
+    },
+    {
+      title: 'Drive Realignment Kit',
+      description: 'Protocol for restoring clarity, motivation, and daily traction.',
+      slug: 'drive-realignment',
+    },
+    {
+      title: 'Pocket Routines',
+      description: 'Fast-acting micro-routines for task switching and daily stability.',
+      slug: 'pocket-routines',
+    },
+  ],
+  books: [
+    {
+      title: 'The Efficiency Trap',
+      description: 'Why capable people silently collapse—and how to recover.',
+      slug: 'efficiency-trap',
+    },
+  ],
+};
 
 export default function WhatWeOfferPage() {
+  const router = useRouter();
+
+  const handleClick = (category: string, slug: string) => {
+    router.push(`/what-we-offer/${category}/${slug}`);
+  };
+
   return (
     <main className={styles.wrapper}>
       <h1 className={styles.heading}>What We Offer</h1>
 
-      {/* Scrollable Categories */}
-      <div className={styles.scrollContainer}>
-        {categories.map((item, index) => (
-          <div className={styles.tile} key={index}>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
+      {Object.entries(sections).map(([category, items]) => (
+        <section key={category} style={{ marginBottom: '3rem' }}>
+          <h2 className={styles.heading} style={{ fontSize: '1.75rem' }}>
+            {category.toUpperCase()}
+          </h2>
+          <div className={styles.scrollContainer}>
+            {items.map(({ title, description, slug }) => (
+              <div
+                key={slug}
+                className={styles.tile}
+                onClick={() => handleClick(category, slug)}
+              >
+                <h2>{title}</h2>
+                <p>{description}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* Grid Section Below */}
-      <div className={styles.gridSection}>
-        {contentTiles.map((item, index) => (
-          <div className={styles.gridTile} key={index}>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
+        </section>
+      ))}
     </main>
   );
 }
