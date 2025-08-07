@@ -1,13 +1,86 @@
 'use client';
 
-import React from 'react';
+import React, { JSX, useState } from 'react';
 import { motion } from 'framer-motion';
-import './WhoWeAre.css'; // optional if you want to externalize styles
+import { modalContent } from '../components/modals/WhoWeAreModalContent';
+import InfoModal from '../components/modals/InfoModal';
+import {
+  Brain,
+  ClipboardList,
+  DollarSign,
+  TrendingUp,
+  ShieldCheck,
+  Users,
+  Handshake,
+  Target,
+} from 'lucide-react';
+
+import '../components/modals/ModalStyles.css';
+import './WhoWeAre.css';
+
+type ModalKey = keyof typeof modalContent;
+
+const sections: {
+  title: ModalKey;
+  description: string;
+  icon: JSX.Element;
+}[] = [
+  {
+    title: 'Practice Ethos',
+    description:
+      'Structured mental performance care—not therapy, not mindset coaching. Built for execution, not reflection.',
+    icon: <Brain size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Model & Method',
+    description:
+      'Weekly sessions + IEPs built on COM-B behavior modeling and identity architecture.',
+    icon: <ClipboardList size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Access & Affordability',
+    description:
+      '$35/session with the first free. Virtual-first model lowers barriers and expands access.',
+    icon: <DollarSign size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Performance Outcomes',
+    description:
+      'Progress is tracked by behavior—not mood—resulting in clarity, regulation, and traction.',
+    icon: <TrendingUp size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Ethics & Integrity',
+    description:
+      'Culturally aware, identity-respecting, and designed to avoid clinical overreach.',
+    icon: <ShieldCheck size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Student & Family Support',
+    description:
+      'Tools for parents navigating student stress and behavioral friction—without waitlists.',
+    icon: <Users size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Supporting Marginalized Clients',
+    description:
+      'Affordable, structurally literate systems for BIPOC, LGBTQ+, and under-resourced clients.',
+    icon: <Handshake size={28} strokeWidth={1.5} />,
+  },
+  {
+    title: 'Strategic Vision',
+    description:
+      'A category-defining model at the intersection of clarity, behavior, and execution.',
+    icon: <Target size={28} strokeWidth={1.5} />,
+  },
+];
 
 export default function WhoWeAre() {
+  const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
+  const handleClose = () => setActiveModal(null);
+
   return (
     <section className="who-we-are-section">
-      {/* 1. Headline */}
       <motion.h1
         className="who-headline"
         initial={{ opacity: 0, y: 30 }}
@@ -17,85 +90,40 @@ export default function WhoWeAre() {
         Mental health has a direct impact on your quality of life.
       </motion.h1>
 
-      {/* 2. What We Do */}
-      <motion.div
-        className="what-we-do"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.1, duration: 0.5 }}
-      >
-        <p>We deliver structured mental performance care for high-agency individuals facing friction in how they think, feel, and act.</p>
-        <p>This isn’t therapy. It’s not mindset coaching. It’s weekly, psychology-informed engagement designed for clarity, regulation, and execution.</p>
-      </motion.div>
+      {sections.map((sec, i) => (
+        <motion.div
+          className="section-group"
+          key={sec.title}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="section-title">
+            <h2>{sec.title}</h2>
+          </div>
 
-      {/* 3. How We Work */}
-      <motion.ul
-        className="how-we-work"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <li>• Weekly 1:1 sessions</li>
-        <li>• Individual Engagement Plans (IEPs)</li>
-        <li>• Performance science + identity architecture</li>
-        <li>• Results tracked through behavior, not mood</li>
-        <li>• $35/session, first session free</li>
-      </motion.ul>
+          <div className="section-tile">
+            <div className="tile-icon">{sec.icon}</div>
+            <p>{sec.description}</p>
+            <button
+              className="learn-more-button"
+              onClick={() => setActiveModal(sec.title)}
+            >
+              Learn More
+            </button>
+          </div>
+        </motion.div>
+      ))}
 
-      {/* 4. Why It Works */}
-      <motion.ul
-        className="why-it-works"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
-        <li>• Less overwhelm. More traction.</li>
-        <li>• Emotional regulation with repeatable tools</li>
-        <li>• Cognitive clarity—your mind, less noise</li>
-        <li>• Consistent execution across work and life</li>
-        <li>• Behavioral systems that hold under pressure</li>
-      </motion.ul>
-
-      {/* 5. Segment Snapshots */}
-      <motion.div
-        className="segment-scroll"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      >
-        <div className="segment-tile">
-          <h3>For Young Professionals</h3>
-          <p>
-            Structure that helps you move through overload, manage responsibility, and keep momentum stable.
-          </p>
-        </div>
-        <div className="segment-tile">
-          <h3>For Students</h3>
-          <p>
-            Tools to manage cognitive fatigue, emotional volatility, and the demands of structured environments.
-          </p>
-        </div>
-        <div className="segment-tile">
-          <h3>For Marginalized Clients</h3>
-          <p>
-            Behavioral systems you can trust—priced accessibly, delivered without jargon, and built to hold under pressure.
-          </p>
-        </div>
-      </motion.div>
-
-      {/* 6. Tagline + CTA */}
-      <motion.div
-        className="cta-container"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        <h2 className="cta-tagline">You lead better when you function better.</h2>
-        <p>Start with a free session. Build the structure that holds.</p>
-        <button className="cta-button" onClick={() => window.location.href = '/start-diagnostic'}>
-          Start Diagnostic
-        </button>
-      </motion.div>
+      {activeModal && modalContent[activeModal] && (
+        <InfoModal
+          isOpen={true}
+          onClose={handleClose}
+          title={modalContent[activeModal].title}
+          body={modalContent[activeModal].body}
+        />
+      )}
     </section>
   );
 }
