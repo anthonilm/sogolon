@@ -1,18 +1,13 @@
 'use client';
 
 import React from 'react';
-import { siteMeta } from '@/lib/meta';
+import WhoWeAre from '../components/WhoWeAre'; // Adjust relative path if your structure differs
 
-export const metadata = {
-  title: siteMeta.routes['/who-we-are'].title,
-  description: siteMeta.routes['/who-we-are'].description,
-};
-
-export default function WhoWeArePage() {
+export default function WhatWeOfferPage() {
   return (
     <main>
-      <h1>Who We Are</h1>
-      <p>This is a placeholder for team, mission, or philosophy content.</p>
+      <WhoWeAre />
+      {/* Other sections or components as needed */}
     </main>
   );
 }
